@@ -873,10 +873,10 @@ $settings['trusted_host_patterns'] = [
   '^' . str_replace('.', '\.', getenv('DRUPAL_SITE_DOMAIN') ?: 'localhost') . '$',
 ];
 
-// Enable/Disable debug mode via environment variable
-$settings['container_yamls'][] = getenv('DRUPAL_DEBUG') == 'true'
-  ? DRUPAL_ROOT . '/sites/development.services.yml'
-  : DRUPAL_ROOT . '/sites/default.services.yml';
+// // Enable/Disable debug mode via environment variable
+// $settings['container_yamls'][] = getenv('DRUPAL_DEBUG') == 'true'
+//   ? DRUPAL_ROOT . '/sites/development.services.yml'
+//   : DRUPAL_ROOT . '/sites/default.services.yml';
 
 // File system configuration
 $settings['file_public_path'] = getenv('DRUPAL_PUBLIC_FILES') ?: 'sites/default/files';
