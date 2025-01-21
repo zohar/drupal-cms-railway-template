@@ -90,8 +90,6 @@ RUN set -eux; \
 
 ENV PATH=${PATH}:/opt/drupal/vendor/bin
 
-VOLUME /opt/drupal/web/sites/default
-
 # Install a Drupal site:
 WORKDIR /opt/drupal
 #RUN ./vendor/bin/drush 
