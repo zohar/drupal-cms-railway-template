@@ -90,8 +90,14 @@ RUN set -eux; \
 
 ENV PATH=${PATH}:/opt/drupal/vendor/bin
 
-# Install a Drupal site:
+### Install a Drupal site ###
+
+# Grab Railway's ENV variables:
+ARG DATABASE_URL
+ARG DRUPAL_ADMIN_PASSWORD
+
 WORKDIR /opt/drupal
-#RUN ./vendor/bin/drush 
+
+RUN ./vendor/bin/drush site-install -y --db-url=$DATABASE_URL --account-pass=$DRUPAL_ADMIN_PASSWORD --site-name="My Drupal CMS on Railway"
 
 # vim:set ft=dockerfile:
