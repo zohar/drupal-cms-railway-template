@@ -99,7 +99,7 @@ ARG DRUPAL_ADMIN_PASSWORD
 
 WORKDIR /opt/drupal
 
-RUN ./vendor/bin/drush site-install -y \
+RUN ./vendor/bin/drush site:install -y \
     --db-url=$MYSQL_PUBLIC_URL \
     --account-pass=$DRUPAL_ADMIN_PASSWORD \
     --site-name="My Drupal CMS on Railway"
