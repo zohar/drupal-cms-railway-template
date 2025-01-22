@@ -89,7 +89,7 @@ RUN set -eux; \
     # delete composer cache
     rm -rf "$COMPOSER_HOME"
 
-ENV PATH=${PATH}:/opt/drupal/vendor/bin
+ENV PATH=${PATH}:/opt/drupal/vendor/bin:/usr/bin
 
 ### Install a Drupal site ###
 
