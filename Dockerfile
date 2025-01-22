@@ -68,6 +68,8 @@ RUN { \
 
 # Increase PHP memory imit to avoid "Fatal error: Allowed memory size" errors
 RUN echo "memory_limit = 420M" > /usr/local/etc/php/conf.d/custom-memory-limit.ini
+# Required by Drupal for better performance
+RUN echo "output_buffering=4096" > /usr/local/etc/php/conf.d/output-buffering.ini
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/
 
