@@ -107,7 +107,7 @@ ARG DRUPAL_RECIPE
 WORKDIR /opt/drupal
 
 RUN if [ "$DRUPAL_SITE_INSTALL" = "true" ]; then \
-      ./vendor/bin/drush site:install -y --db-url=$DATABASE_PUBLIC_URL --account-pass=$DRUPAL_ADMIN_PASSWORD --site-name="My Drupal CMS on Railway" DRUPAL_RECIPE ; \
+      ./vendor/bin/drush site:install -y --db-url=$DATABASE_PUBLIC_URL --account-pass=$DRUPAL_ADMIN_PASSWORD --site-name="My Drupal CMS on Railway" $DRUPAL_RECIPE ; \
       echo "Drpual is installed. Your admin password is $DRUPAL_ADMIN_PASSWORD . Think of changing it to something else after you log in."; \
     else \
       echo "DRUPAL_SITE_INSTALL is not set to 'true'. Skipping site-install"; \
