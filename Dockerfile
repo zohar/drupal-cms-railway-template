@@ -97,6 +97,9 @@ RUN set -eux; \
 
 ENV PATH=${PATH}:/opt/drupal/vendor/bin:/usr/bin
 
+# explicitly change files directory permissions:
+RUN chown -R www-data:www-data /opt/drupal/web/sites/default
+
 ### Install a Drupal site ###
 
 # Grab Railway's ENV variables
