@@ -854,6 +854,33 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # $settings['migrate_file_public_path'] = '';
 # $settings['migrate_file_private_path'] = '';
 
+$databases['default']['default'] = [
+  'driver' => getenv('DRUPAL_DB_DRIVER') ?: 'mysql',
+  'database' => getenv('DRUPAL_DB_NAME') ?: 'drupal',
+  'username' => getenv('DRUPAL_DB_USER') ?: 'drupal',
+  'password' => getenv('DRUPAL_DB_PASS') ?: '',
+  'host' => getenv('DRUPAL_DB_HOST') ?: 'localhost',
+  'port' => getenv('DRUPAL_DB_PORT') ?: '3306',
+  'prefix' => '',
+  'collation' => 'utf8mb4_general_ci',
+];
+
+// Hash salt for added security
+$settings['hash_salt'] = getenv('DRUPAL_HASH_SALT') ?: 'default-hash-salt';
+
+// Trusted host patterns (to prevent host header attacks)
+$settings['trusted_host_patterns'] = [
+  '^' . str_replace('.', '\.', getenv('DRUPAL_SITE_DOMAIN') ?: 'localhost') . '$',
+];
+
+// // Enable/Disable debug mode via environment variable
+// $settings['container_yamls'][] = getenv('DRUPAL_DEBUG') == 'true'
+//   ? DRUPAL_ROOT . '/sites/development.services.yml'
+//   : DRUPAL_ROOT . '/sites/default.services.yml';
+
+// File system configuration
+$settings['file_public_path'] = getenv('DRUPAL_PUBLIC_FILES') ?: 'sites/default/files';
+$settings['file_private_path'] = getenv('DRUPAL_PRIVATE_FILES') ?: '/var/www/private';
 /**
  * Load local development override configuration, if available.
  *
